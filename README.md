@@ -3,27 +3,27 @@
 Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
 
 # requirment
-php >= 8.2.0
+php >= 8.2.0.
 laravel 11+
 
-# Clone the Repository
+Clone the Repository
 
 #  setup
 
 Run following command.
 
-composer install
-php artisan migrate
-npm install
-npm run dev
+composer install.
+php artisan migrate.
+npm install.
+npm run dev.
 
-# Copy the .env.example file to .env and configure your environment variables.
+Copy the .env.example file to .env and configure your environment variables.
 
 # env file
 
 Add this 2 constant to env file
 
-EXCHANGE_API_KEY=your_access_key
+EXCHANGE_API_KEY=your_access_key.
 EXCHANGE_API_URL=https://api.exchangeratesapi.io/v1/
 
 # Run laravel app 
