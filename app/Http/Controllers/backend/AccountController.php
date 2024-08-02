@@ -34,6 +34,14 @@ class AccountController extends Controller
     }
     public function accountDetail($id){
         $account = Account::find($id);
-        return view('frontend.account.detail',compact('account'));
+        if($account){
+            if($account->user_id != auth()->user()->id){
+                if(auth()->user()->user_type !='Admin'){
+                    abort(403, 'Unauthorized');
+                }
+            }
+            return view('frontend.account.detail',compact('account'));
+        }
+        return redirect()->route('dashboard');
     }
 }

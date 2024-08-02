@@ -26,6 +26,7 @@ class TransactionController extends Controller
     }
     public function transferhistory(Request $request, $id){
         if ($request->ajax()) {
+            $account = Account::find($id);
             $balance= 10000;
             $transactions = Transaction::where('from_account_id', $id)->orWhere('to_account_id', $id)->orderBy('transaction_date', 'asc')->get();
             $runningBalance = $balance;
@@ -60,6 +61,14 @@ class TransactionController extends Controller
                 ->make(true);
         }
         $account = Account::find($id);
-        return view('frontend.account.history', compact('account'));
+        if($account){
+            if($account->user_id != auth()->user()->id){
+                if(auth()->user()->user_type !='Admin'){
+                    abort(403, 'Unauthorized');
+                }
+            }
+            return view('frontend.account.history', compact('account'));
+        }
+        return redirect()->route('dashboard');
     }
 }
